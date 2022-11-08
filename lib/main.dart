@@ -17,16 +17,30 @@ class MyApp extends StatelessWidget {
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
+  Widget _box(var index) {
+    return ElevatedButton(
+      onPressed: (){}, 
+      child: Text("$index")
+      );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Center(
-          child : Text('Tic Tac Toe'),),
+          child: Text('Tic Tac Toe'),
+        ),
       ),
-      body: const Center(
-        child: Text('This is tic tac toe interface'),
-      ),
+      body: Center(
+          child: GridView.count(
+        crossAxisCount: 3,
+        children: List.generate(9, (index) {
+          return Center(
+            child: _box(index),
+          );
+        }),
+      )),
     );
   }
 }
