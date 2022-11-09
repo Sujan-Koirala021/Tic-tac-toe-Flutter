@@ -1,7 +1,8 @@
+//  Track already chosen positions
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'pages/game_page.dart';
 import 'pages/home_page.dart';
 
 

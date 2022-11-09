@@ -18,14 +18,22 @@ class _GamePageState extends State<GamePage> {
         ),
         onPressed: () {
           setState(() {
-            if (globals.isOTurn) {
+            if (globals.isOTurn && globals.isValid(index)) {
               globals.oList.add(index);
               globals.boxText[index - 1] = "O";
-            } else {
-              globals.xList.add(index);
-              globals.boxText[index - 1] = "X";
+              globals.availableButtonList.remove(index);
+              globals.isOTurn = !globals.isOTurn;
+
             }
-            globals.isOTurn = !globals.isOTurn;
+            if (!globals.isOTurn && globals.isValid(index)) {
+            {
+                globals.xList.add(index);
+                globals.boxText[index - 1] = "X";
+                globals.availableButtonList.remove(index);
+                globals.isOTurn = !globals.isOTurn;
+
+            }
+            }
           });
           globals.checkWin();
           print(globals.oList);
