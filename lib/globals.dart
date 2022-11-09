@@ -29,10 +29,12 @@ void resetGlobals() {
 }
 
 void checkWin() {
+  //  Convert lists to sets
   Set oSet = Set.of(oList);
   Set xSet = Set.of(xList);
 
   for (int i = 0; i < ticTacWin.length; i++) {
+    //  Check if set contains winning combo
     bool oWins = oSet.containsAll(ticTacWin[i]);
     bool xWins = xSet.containsAll(ticTacWin[i]);
     if (oWins) print("O wins");
