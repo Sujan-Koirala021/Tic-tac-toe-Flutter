@@ -26,12 +26,6 @@ class _HomePageState extends State<HomePage> {
 
   Widget _button(String buttonText) {
     return ElevatedButton(
-      child: Text(
-        buttonText,
-        style: TextStyle(
-          fontSize: 20,
-        ),
-      ),
       onPressed: () {
         if (buttonText == 'Exit Game') {
           exitGame();
@@ -40,8 +34,20 @@ class _HomePageState extends State<HomePage> {
         }
         globals.resetGlobals();
       },
+
+      child :Padding(
+        padding: const EdgeInsets.symmetric(vertical: 15.0, horizontal: 10),
+        child: Text(
+        buttonText,
+        style: TextStyle(
+          fontSize: 20,
+        ),
+      ),
+      ),
+
+      
       style: ElevatedButton.styleFrom(
-        backgroundColor: Colors.amber[800],
+        backgroundColor: Colors.red[200],
         shape: StadiumBorder(),
       ),
     );
@@ -53,12 +59,17 @@ class _HomePageState extends State<HomePage> {
         title: const Center(
           child: Text('Tic Tac Toe'),
         ),
+        automaticallyImplyLeading: false,
+        backgroundColor: Colors.green[400],
       ),
       body: Center(
         child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
           children: [
             _button('Start Game'),
-            _button('Exit Game'),
+            const SizedBox(height : 30),
+            _button('Exit'),
           ],
         ),
       ),

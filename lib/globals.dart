@@ -2,6 +2,8 @@ List buttonList = [];
 List oList = [];
 List xList = [];
 List availableButtonList = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+bool oWins = false;
+bool xWins = false;
 
 List boxText = ["", "", "", "", "", "", "", "", ""];
 bool isOTurn = true;
@@ -25,7 +27,8 @@ void resetGlobals() {
   boxText = ["", "", "", "", "", "", "", "", ""];
   isOTurn = true;
   availableButtonList = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-
+  oWins = false;
+  xWins = false;
 }
 
 void checkWin() {
@@ -35,20 +38,20 @@ void checkWin() {
 
   for (int i = 0; i < ticTacWin.length; i++) {
     //  Check if set contains winning combo
-    bool oWins = oSet.containsAll(ticTacWin[i]);
-    bool xWins = xSet.containsAll(ticTacWin[i]);
-    if (oWins) print("O wins");
-    if (xWins) print("X wins");
+    oWins = oSet.containsAll(ticTacWin[i]);
+    xWins = xSet.containsAll(ticTacWin[i]);
+    if (oWins) break;
+    if (xWins) break;
+    if (!oWins && !xWins && availableButtonList.isEmpty) break;
+
   }
 }
 
 bool isValid(int index) {
-  if (availableButtonList.contains(index))
-  {
+  //  Check if the button is occupied
+  if (availableButtonList.contains(index)) {
     return true;
-  }
-  else
-  {
+  } else {
     return false;
   }
 }
