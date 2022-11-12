@@ -63,6 +63,8 @@ class _GamePageState extends State<GamePage> {
     return ElevatedButton(
         style: ElevatedButton.styleFrom(
           minimumSize: const Size(100, 100),
+          backgroundColor: Colors.blueGrey[600],
+
           // maximumSize: const Size(00, 50),
         ),
         onPressed: () {

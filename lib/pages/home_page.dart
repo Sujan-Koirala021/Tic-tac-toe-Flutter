@@ -47,7 +47,7 @@ class _HomePageState extends State<HomePage> {
 
       
       style: ElevatedButton.styleFrom(
-        backgroundColor: Colors.red[200],
+        backgroundColor: Colors.blueGrey[500],
         shape: StadiumBorder(),
       ),
     );
@@ -60,7 +60,7 @@ class _HomePageState extends State<HomePage> {
           child: Text('Tic Tac Toe'),
         ),
         automaticallyImplyLeading: false,
-        backgroundColor: Colors.green[400],
+        backgroundColor: Colors.grey[800],
       ),
       body: Center(
         child: Column(
