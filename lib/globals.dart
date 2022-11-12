@@ -42,8 +42,6 @@ void checkWin() {
     xWins = xSet.containsAll(ticTacWin[i]);
     if (oWins) break;
     if (xWins) break;
-    if (!oWins && !xWins && availableButtonList.isEmpty) break;
-
   }
 }
 

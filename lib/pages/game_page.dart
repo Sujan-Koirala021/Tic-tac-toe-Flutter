@@ -74,6 +74,7 @@ class _GamePageState extends State<GamePage> {
               globals.boxText[index - 1] = "O";
               globals.availableButtonList.remove(index);
               globals.isOTurn = !globals.isOTurn;
+              globals.checkWin();
             }
             if (!globals.isOTurn && globals.isValid(index)) {
               {
@@ -81,18 +82,26 @@ class _GamePageState extends State<GamePage> {
                 globals.boxText[index - 1] = "X";
                 globals.availableButtonList.remove(index);
                 globals.isOTurn = !globals.isOTurn;
+                globals.checkWin();
               }
             }
           });
-          globals.checkWin();
-          if (globals.oWins) _showDialog('O Wins');
-          if (globals.xWins) _showDialog('X Wins');
-          if (!globals.oWins &&
-              !globals.xWins &&
-              globals.availableButtonList.isEmpty) _showDialog('Draw');
+          if (globals.oWins) {
+            _showDialog('O Wins');
+          }
 
-          print(globals.oList);
-          print(globals.xList);
+          if (globals.xWins) {
+            _showDialog('x Wins');
+          }
+
+          if (globals.availableButtonList.isEmpty &&
+              !globals.oWins &&
+              !globals.xWins) {
+            print(globals.oWins);
+            print(globals.xWins);
+
+            _showDialog('Draw');
+          }
         },
         child: Padding(
           padding: const EdgeInsets.all(20),
@@ -137,36 +146,34 @@ class _GamePageState extends State<GamePage> {
             ),
             Row(
               children: [
-          IconButton(
-              onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => HomePage()));
-              },
-              icon: Icon(
-                Icons.home,
-                size: 40.0,
-                textDirection: TextDirection.ltr,
-                semanticLabel: 'Home',
-              ),
-            ),
-            IconButton(
-              onPressed: () {
-                setState(() {
-                  globals.resetGlobals();
-                });
-              },
-              icon: Icon(
-                Icons.restart_alt_rounded,
-                size: 40.0,
-                textDirection: TextDirection.ltr,
-                semanticLabel: 'Restart',
-              ),
-            ),
-
+                IconButton(
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => HomePage()));
+                  },
+                  icon: Icon(
+                    Icons.home,
+                    size: 40.0,
+                    textDirection: TextDirection.ltr,
+                    semanticLabel: 'Home',
+                  ),
+                ),
+                IconButton(
+                  onPressed: () {
+                    setState(() {
+                      globals.resetGlobals();
+                    });
+                  },
+                  icon: Icon(
+                    Icons.restart_alt_rounded,
+                    size: 40.0,
+                    textDirection: TextDirection.ltr,
+                    semanticLabel: 'Restart',
+                  ),
+                ),
               ],
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             ),
-  
           ],
         ),
       ),
