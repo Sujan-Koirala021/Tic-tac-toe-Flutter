@@ -97,9 +97,6 @@ class _GamePageState extends State<GamePage> {
           if (globals.availableButtonList.isEmpty &&
               !globals.oWins &&
               !globals.xWins) {
-            print(globals.oWins);
-            print(globals.xWins);
-
             _showDialog('Draw');
           }
         },

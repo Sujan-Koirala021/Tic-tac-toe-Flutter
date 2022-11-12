@@ -12,7 +12,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  @override
   //  Route to GamePage
   void startGame() {
     Navigator.push(
