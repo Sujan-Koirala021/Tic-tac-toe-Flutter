@@ -26,7 +26,7 @@ class _HomePageState extends State<HomePage> {
   Widget _button(String buttonText) {
     return ElevatedButton(
       onPressed: () {
-        if (buttonText == 'Exit Game') {
+        if (buttonText == 'Exit') {
           exitGame();
         } else {
           startGame();
