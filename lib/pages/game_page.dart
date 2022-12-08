@@ -50,22 +50,22 @@ class _GamePageState extends State<GamePage> {
         turnText,
         textAlign: TextAlign.center,
         style: const TextStyle(
-          fontWeight: FontWeight.bold,
-          fontSize: 20,
+          // fontWeight: FontWeight.bold,
+          fontSize: 18,
         ),
       ),
-      height: 100,
+      // height: 50,
       padding: EdgeInsets.all(4),
     );
   }
 
   Widget _box(var index) {
-    return ElevatedButton(
+    return Container(
+      width: 10,
+      height: 10,
+      child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          minimumSize: const Size(100, 100),
           backgroundColor: Colors.blueGrey[600],
-
-          // maximumSize: const Size(00, 50),
         ),
         onPressed: () {
           setState(() {
@@ -100,79 +100,86 @@ class _GamePageState extends State<GamePage> {
             _showDialog('Draw');
           }
         },
-        child: Padding(
-          padding: const EdgeInsets.all(20),
-          child: Text(
-            globals.boxText[index - 1],
-            style: const TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 24,
-            ),
+        child: Text(
+          globals.boxText[index - 1],
+          style: const TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 24,
           ),
-        ));
+        ),
+      ),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Column(
-          children: [
-            const SizedBox(height: 40), //  To maintain spacing
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          ConstrainedBox(
+              // constraints: BoxConstraints.expand(height: 200, width: 200),
 
-            ConstrainedBox(
-                constraints: const BoxConstraints(
-                  minHeight: 20.0,
-                  maxHeight: 40.0,
-                ),
-                child: globals.isOTurn
-                    ? _displayTurn('O turn')
-                    : _displayTurn('X turn')),
-            const SizedBox(height: 20), //  To maintain spacing
-            SizedBox(
-              height: 350,
+              constraints: const BoxConstraints(
+                minHeight: 50.0 ,
+              // maxHeight: 40.0,
+              ),
+              child: globals.isOTurn
+                  ? _displayTurn('O turn')
+                  : _displayTurn('X turn')),
+          // const SizedBox(height: 5), //  To maintain spacing
+          Container(
+            width: 400,
+            child: AspectRatio(
+              aspectRatio: 1/1,
+              // height: MediaQuery.of(context).size.height - 69,
               child: GridView.count(
+                // childAspectRatio: 3 / 2,
+
+                // physics: NeverScrollableScrollPhysics(),
+                primary: false,
+                padding: const EdgeInsets.all(20),
+                crossAxisSpacing: 10,
+                mainAxisSpacing: 10,
                 crossAxisCount: 3,
                 children: List.generate(9, (index) {
                   index++;
-                  return Center(
-                    child: _box(index),
-                  );
+                  return _box(index);
                 }),
               ),
             ),
-            Row(
-              children: [
-                IconButton(
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => HomePage()));
-                  },
-                  icon: Icon(
-                    Icons.home,
-                    size: 40.0,
-                    textDirection: TextDirection.ltr,
-                    semanticLabel: 'Home',
-                  ),
+          ),
+          Row(
+            children: [
+              IconButton(
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => HomePage()));
+                },
+                icon: Icon(
+                  Icons.home,
+                  size: 30.0,
+                  textDirection: TextDirection.ltr,
+                  semanticLabel: 'Home',
                 ),
-                IconButton(
-                  onPressed: () {
-                    setState(() {
-                      globals.resetGlobals();
-                    });
-                  },
-                  icon: Icon(
-                    Icons.restart_alt_rounded,
-                    size: 40.0,
-                    textDirection: TextDirection.ltr,
-                    semanticLabel: 'Restart',
-                  ),
+              ),
+              IconButton(
+                onPressed: () {
+                  setState(() {
+                    globals.resetGlobals();
+                  });
+                },
+                icon: Icon(
+                  Icons.restart_alt_rounded,
+                  size: 30.0,
+                  textDirection: TextDirection.ltr,
+                  semanticLabel: 'Restart',
                 ),
-              ],
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            ),
-          ],
-        ),
+              ),
+            ],
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          ),
+        ],
       ),
     );
   }
