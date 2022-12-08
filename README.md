@@ -1,16 +1,20 @@
-# tik_tac_toe
 
-A new Flutter project.
+# Tic-Tac-Toe
 
-## Getting Started
+Tic-tac-toe (nep: आलु क्रस)  is a paper-and-pencil game for two players who take turns marking the spaces in a three-by-three grid with X or O.
 
-This project is a starting point for a Flutter application.
+The player who succeeds in placing three of their marks in a horizontal, vertical, or diagonal row is the winner. It is a solved game, with a forced draw assuming best play from both players.
 
-A few resources to get you started if this is your first Flutter project:
+![tik](https://user-images.githubusercontent.com/84112374/170708043-ae0eb09e-25df-415e-b3dd-76a4c2d30627.png)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+## Documentation
+- [Flutter](https://docs.flutter.dev/)
+
+
+
+## Authors
+
+ [@Sujan_Koirala](https://github.com/Sujan-Koirala021)
+
