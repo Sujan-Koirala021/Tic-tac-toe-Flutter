@@ -15,8 +15,10 @@ class _GamePageState extends State<GamePage> {
     // flutter defined function
     showDialog(
       context: context,
+      barrierDismissible: false,  //  make AlertDialog not closable by clicking outside.
       builder: (BuildContext context) {
         // return object of type Dialog
+
         return AlertDialog(
           title: Text('Game Over'),
           content: Text(dialogText),
@@ -121,8 +123,8 @@ class _GamePageState extends State<GamePage> {
               // constraints: BoxConstraints.expand(height: 200, width: 200),
 
               constraints: const BoxConstraints(
-                minHeight: 50.0 ,
-              // maxHeight: 40.0,
+                minHeight: 50.0,
+                // maxHeight: 40.0,
               ),
               child: globals.isOTurn
                   ? _displayTurn('O turn')
@@ -131,7 +133,7 @@ class _GamePageState extends State<GamePage> {
           Container(
             width: 400,
             child: AspectRatio(
-              aspectRatio: 1/1,
+              aspectRatio: 1 / 1,
               // height: MediaQuery.of(context).size.height - 69,
               child: GridView.count(
                 // childAspectRatio: 3 / 2,
